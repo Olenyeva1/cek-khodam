@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKU NIKO DAN BAKAL TEBAK KHODAM KAMU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"], input[type="date"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AKU NIKO DAN BAKAL TEBAK KHODAM KAMU</h1>
+    
+    <form id="khodamForm">
+        <input type="text" id="name" placeholder="Nama lengkap" required><br>
+        <input type="date" id="dob" required><br>
+        <button type="button" onclick="tebakKhodam()">Tebak Khodam</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        const khodamList = [
+            "Sempak Firaun", "Gayung bocor", "Harimau birahi", "Monyet sange", 
+            "Tumis kangkung", "Cicak kawin", "Remote TV", "Sendal jepit", 
+            "Kadal galau", "Bakwan jagung", "Pocong Jalan", "Jin penjual sate", 
+            "Spiderman nyangkut", "Batman kesandung", "Tutup odol", "Tutup panci", 
+            "Tumis kangkung", "Jam dinding", "Kodok terbang", "Kanjut kuda"
+        ];
+
+        function tebakKhodam() {
+            const name = document.getElementById("name").value.trim().toLowerCase();
+            const dob = document.getElementById("dob").value;
+
+            if (name === "" || dob === "") {
+                alert("Kotaknya di isi dulu tolol!");
+                return;
+            }
+
+            let resultText = "";
+
+            // Khusus untuk "Nayra Rachmayda"
+            if (name === "nayra rachmayda") {
+                resultText = "I Love You";
+            } else {
+                // Acak Khodam secara random
+                const randomIndex = Math.floor(Math.random() * khodamList.length);
+                resultText = khodamList[randomIndex];
+            }
+
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>
